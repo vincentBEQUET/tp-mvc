@@ -1,5 +1,7 @@
 <?php ob_start(); ?>
+<?php
 //RECUPERATION DES DONNEES
+require __DIR__ . '/../../../config/Db.php';
 $request = 'SELECT * FROM type';
 $response = $bdd->query($request);
 $posts = $response->fetchAll(PDO::FETCH_ASSOC);
@@ -18,10 +20,10 @@ $posts = $response->fetchAll(PDO::FETCH_ASSOC);
             ?>
         </select>
         <label> Type du film </label>
-        <input type="text" id="author" placeholder="Auteur du film">
-        <input type="text" id="duration" placeholder="Durée du film">
-        <input type="file" name="photo">
-        <input type="submit" id="ajout_film" value="Ajouter">
+        <input class="form-control" type="text" id="author" placeholder="Auteur du film">
+        <input class="form-control" type="text" id="duration" placeholder="Durée du film">
+        <input class="form-control" type="file" name="photo">
+        <input class="form-control" type="submit" id="ajout_film" value="Ajouter">
     </fieldset>
 </form>
 

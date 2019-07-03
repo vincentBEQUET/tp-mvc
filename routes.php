@@ -30,7 +30,7 @@ $router->get('/affichage_films/{id}', 'PagesController@show');//détails d'un fi
 
 /* Créer */
 $router->get('/add_film', 'PagesController@add_film');//afficher le formulaire pour ajouter un film
-//$router->post('/film-add', 'PagesController@save'); //gérer l'envoi du formulaire d'ajout d'un film
+$router->post('/film-add', 'PagesController@save'); //gérer l'envoi du formulaire d'ajout d'un film
 
 /* Modifier */
 $router->get('/film-change/{id}', 'FilmsController@change'); //afficher le formulaire pour modifier un film
