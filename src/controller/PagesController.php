@@ -2,16 +2,17 @@
 
 // PagesController.php
 
-class PagesController 
+class PagesController
 {
     public function home()
     {
         view('pages.home');
     }
-    
-    public function affichage_user() 
+
+    public function affichage_user()
     {
-        view('pages.affichage_user');
+        $users = User::findAll();
+        view('pages.affichage_user', compact('users'));
     }
 
     public function add_user()
@@ -31,7 +32,8 @@ class PagesController
 
     public function affichage_film()
     {
-        view('pages.affichage_film');
+        $films = Film::findAll();
+        view('pages.affichage_film', compact('films'));
     }
 
     public function add_film()
@@ -52,6 +54,6 @@ class PagesController
 
         view('pages.add_film');
     }
-    
+
 
 }

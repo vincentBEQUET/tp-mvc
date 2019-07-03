@@ -1,28 +1,23 @@
 <?php ob_start(); ?>
-//RECUPERATION DES DONNEES
-$request = 'SELECT * FROM type';
-$response = $bdd->query($request);
-$posts = $response->fetchAll(PDO::FETCH_ASSOC);
-?>
+
 <h1>Ajouter un film</h1>
 
 <form method="post" enctype="multipart/form-data">
     <fieldset>
-        <input type="text" id="title" placeholder="Titre du film">
+        <input type="text" id="title" placeholder="Titre du film"><br><br>
         <select id="type">
             <?php
-            foreach ($posts as $post) //Affichage de tous les types.
+            foreach ($types as $type) //Affichage de tous les types.
             {
-                echo "<option>" . $post['name'] . "</option>";
+                echo "<option>" . $type['name'] . "</option>";
             }
             ?>
         </select>
-        <label> Type du film </label>
-        <input type="text" id="author" placeholder="Auteur du film">
-        <input type="text" id="duration" placeholder="Durée du film">
-        <input type="file" name="photo">
-        <input type="submit" id="ajout_film" value="Ajouter">
+        <label> Type du film </label><br><br>
+        <input type="text" id="author" placeholder="Auteur du film"><br><br>
+        <input type="text" id="duration" placeholder="Durée du film"><br><br>
+        <input type="file" name="photo"><br><br>
+        <input type="submit" id="ajout_film" value="Ajouter"><br><br>
     </fieldset>
 </form>
-
 <?php $content = ob_get_clean() ?> <?php view('template', compact('content')); ?>
