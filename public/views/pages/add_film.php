@@ -1,5 +1,4 @@
 <?php ob_start(); ?>
-<?php
 //RECUPERATION DES DONNEES
 $request = 'SELECT * FROM type';
 $response = $bdd->query($request);
