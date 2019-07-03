@@ -30,9 +30,11 @@ $router->get('/films/{id}', 'FilmsController@show');//détails d'un film par id
 /* Créer */
 $router->get('/film-add', 'FilmsController@add');//afficher le formulaire pour ajouter un film
 $router->post('/film-add', 'FilmsController@save'); //gérer l'envoi du formulaire d'ajout d'un film
+
 /* Modifier */
 $router->get('/film-change/{id}', 'FilmsController@change'); //afficher le formulaire pour modifier un film
 $router->post('/film-change/{id}', 'FilmsController@saveChange'); //gérer l'envoi du formulaire de modification d'un film
+
 /* Supprimer */
 $router->get('/film-delete/{id}', 'FilmsController@delete'); //afficher le formulaire pour modifier un film
 $router->post('/film-delete/{id}', 'FilmsController@saveDelete'); //gérer l'envoi du formulaire de modification d'un film
@@ -42,6 +44,7 @@ $router->post('/film-delete/{id}', 'FilmsController@saveDelete'); //gérer l'env
 /* Afficher */
 $router->get('/vues', 'VuesController@index'); // lister tous les vues
 $router->get('/vues/{id}', 'VuesController@show'); //détails d'une vue par id
+
 /* Créer */
 $router->get('/vue-add', 'TypesController@add'); //afficher le formulaire pour ajouter une vue
 $router->post('/vue-add', 'TypesController@save');//gérer l'envoi du formulaire d'ajout d'une vue
@@ -53,9 +56,11 @@ $router->post('/vue-add', 'TypesController@save');//gérer l'envoi du formulaire
 /* Afficher */
 $router->get('/types', 'TypesController@index'); // lister tous les types
 $router->get('/types/{id}', 'TypesController@show'); //détails d'un type par id
+
 /* Créer */
 $router->get('/type-add', 'TypesController@add'); //afficher le formulaire pour ajouter un type
 $router->post('/type-add', 'TypesController@save');//gérer l'envoi du formulaire d'ajout d'un type
+
 /* Modifier */
 
 /* Supprimer */
