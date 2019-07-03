@@ -5,17 +5,18 @@ $router = new Router();
 
 
 $router->get('', 'PagesController@home' );
-$router->get('list-examples', 'ExamplesController@index');
-$router->get('add-example', 'ExamplesController@add');
-$router->post('add-example', 'ExamplesController@save');
+
 
 /* Routes pour les usagers */
 /* Afficher */
-$router->get('/users', 'UserController@index'); // lister tous les usagers
-$router->get('/users/{id}', 'UserController@show'); //détails d'un usager par id
+$router->get('/users', 'PagesController@affichage_user'); // lister tous les usagers
+$router->get('/users/{id}', 'PagesController@show'); //détails d'un usager par id
 /* Créer */
-$router->get('/user','UserController@add'); //afficher le formulaire pour ajouter un usager
-$router->post('/user', 'UserController@save'); //gérer l'envoi du formulaire d'ajout d'un usager
+$router->get('/user','PagesController@add_user'); 
+
+
+//afficher le formulaire pour ajouter un usager
+$router->post('/user', 'PagesController@save'); //gérer l'envoi du formulaire d'ajout d'un usager
 /* Modifier */
 
 /* Supprimer */
@@ -24,12 +25,12 @@ $router->post('/user', 'UserController@save'); //gérer l'envoi du formulaire d'
 
 /* Routes pour les films */
 /* Afficher */
-$router->get('/films', 'FilmsController@index');// lister tous les films
-$router->get('/films/{id}', 'FilmsController@show');//détails d'un film par id
+$router->get('/films', 'PagesController@affichage_film');// lister tous les films
+$router->get('/films/{id}', 'PagesController@show');//détails d'un film par id
 
 /* Créer */
-$router->get('/film-add', 'FilmsController@add');//afficher le formulaire pour ajouter un film
-$router->post('/film-add', 'FilmsController@save'); //gérer l'envoi du formulaire d'ajout d'un film
+$router->get('/film-add', 'PagesController@add_film');//afficher le formulaire pour ajouter un film
+//$router->post('/film-add', 'PagesController@save'); //gérer l'envoi du formulaire d'ajout d'un film
 
 /* Modifier */
 $router->get('/film-change/{id}', 'FilmsController@change'); //afficher le formulaire pour modifier un film
