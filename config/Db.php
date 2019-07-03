@@ -7,7 +7,7 @@ class Db {
     private static function getDb() {
         try {
             // Essaie de faire ce script...
-            $bdd = new PDO('mysql:host='.DB_HOST.';dbname='.DB_NAME.';charset=utf8;port='.DB_PORT, DB_USER, DB_PWD);
+            $bdd = new PDO('mysql:host=localhost;dbname=netflix;charset=utf8;port=3306', 'root', '');
         }
         catch (Exception $e) {
             // Sinon, capture l'erreur et affiche la
