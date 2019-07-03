@@ -12,12 +12,50 @@ class User {
     protected $avatar;
 
 
-    /* Setters */
+    /* Setters */ // Faut-il créer des setters pour ID et created_at??
     public function setId($id){
         $this->id = $id;
         return $this;
     }
 
+    
+    public function setName($name)
+    {
+        // Il faudra faire de validations
+        $this->name = $name;
+        return $this;
+    }
+
+    public function setPassword($password)
+    {
+        // Il faudra faire de validations
+        $this->password = $password;
+        return $this;
+    }
+
+    public function setEmail($email)
+    {
+        // Il faudra faire de validations
+        $this->email = $email;
+        return $this;
+    }
+
+    public function setCreatedAt($created_at)
+    {
+        // Il faudra faire de validations
+        $date = DateTime::createFromFormat('Y-m-d', $created_at);
+        if (!$date) {
+            throw new Exception("La date saisie n'est pas au format correct (YYYY-MM-DD).");
+        }
+        $this->created_at = $created_at;
+        return $this;
+    }
+    public function setAvatar($avatar)
+    {
+        // Il faudra faire de validations
+        $this->avatar = $avatar;
+        return $this;
+    }
     /* Getters */
     public function getId()
     {
