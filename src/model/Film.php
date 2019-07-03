@@ -56,7 +56,7 @@ class Film
     {
         // Validation
         $aRegex = '/^19[0-9]{2}|(200[0-9]{1}|201[0-9]{1})$/'; //date doit être 19__ ou 200_ ou 201_
-        if ( !preg_match($aRegex, $releaseYear) ) {
+        if ( !preg_match($aRegex, $release_year) ) {
         throw new Exception('La date de création saisie n\'est pas valable.');
         }
         $this->release_year = $release_year;
