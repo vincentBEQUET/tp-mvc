@@ -1,4 +1,5 @@
 <?php ob_start(); ?>
+<?php
 //RECUPERATION DES DONNEES
 require __DIR__ . '/../../../config/Db.php';
 $request = 'SELECT * FROM type';
