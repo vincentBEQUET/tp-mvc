@@ -2,14 +2,14 @@
 
 // PagesController.php
 
-class PagesController 
+class PagesController
 {
     public function home()
     {
         view('pages.home');
     }
-    
-    public function affichage_user() 
+
+    public function affichage_user()
     {
         view('pages.affichage_user');
     }
@@ -26,8 +26,9 @@ class PagesController
 
     public function add_film()
     {
-        view('pages.add_film');
+        $types = Type::findAll();
+        view('pages.add_film', compact('types'));
     }
-    
+
 
 }
