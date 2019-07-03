@@ -94,4 +94,18 @@ class User {
         return $this->avatar;
     }
 
+
+    public function save(){
+        $data = [
+            'name'      => $this->name,
+            'email'     => $this->email,
+            'password'  => $this->password,
+            'avatar'    => $this->avatar
+        ];
+
+        $id = $this->dbCreate(self::TABLE_NAME, $data);
+
+        $this->id = $id;
+    }
+
 }
