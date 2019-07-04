@@ -11,10 +11,10 @@ class FilmsController
     public function show($id)
     {
         $film = Film::findOne($id);
-        // $vues = Film::film_vue($id);
-        // dump($vues);
-        // view('films.affichage_film', compact('film', 'vues'));
-        view('films.affichage_film', compact('film'));
+        $vues = Film::film_vue($id);
+        
+        view('films.affichage_film', compact('film', 'vues'));
+        
 
     }
 
@@ -31,7 +31,8 @@ class FilmsController
 
     public function save()
     {
-        
+        //A faire lorsque les POST soient complets. Entre les guimets du $_POST va nom du champ dans le formulaire
+
         if (!empty($_POST)) {
 
             $film = new Film;
