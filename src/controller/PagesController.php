@@ -38,7 +38,7 @@ class PagesController
 
     public function add_film()
     {
-/*   A faire lorsque les POST soient complets. Entre les guimets du $_POST va nom du champ dans le formulaire
+        /*   A faire lorsque les POST soient complets. Entre les guimets du $_POST va nom du champ dans le formulaire
         $film = new Film;
 
         $film->setTitle($_POST['']);
@@ -51,8 +51,8 @@ class PagesController
 
         $film->save();
 */
-
-        view('pages.add_film');
+        $types = Type::findAll();
+        view('pages.add_film', compact('types')); // Recherche des types de film pour le champ type du formulaire de création de film.
     }
 
 
