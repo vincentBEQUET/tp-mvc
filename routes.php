@@ -29,8 +29,8 @@ $router->get('/affichage_film', 'FilmsController@affichage_film');// lister tous
 $router->get('/affichage_films/{id}', 'FilmsController@show');//détails d'un film par id
 
 /* Créer */
-$router->get('/add_film', 'FilmsController@add_film');//afficher le formulaire pour ajouter un film
-$router->post('/film-add', 'FilmsController@save'); //gérer l'envoi du formulaire d'ajout d'un film
+$router->get('/add_film', 'FilmsController@add_film'); //afficher le formulaire pour ajouter un film
+$router->post('/add_film', 'FilmsController@save'); //gérer l'envoi du formulaire d'ajout d'un film
 
 /* Modifier */
 $router->get('/film-change/{id}', 'FilmsController@change'); //afficher le formulaire pour modifier un film
