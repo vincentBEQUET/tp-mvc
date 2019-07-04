@@ -1,21 +1,13 @@
 <?php
-
-// PagesController.php
-
 class PagesController
 {
-    public function home()
-    {
-        view('pages.home');
-    }
-
-    
 
     public function affichage_film()
     {
         $films = Film::findAll();
         view('pages.affichage_film', compact('films'));
     }
+
 
     public function add_film()
     {
@@ -35,6 +27,5 @@ class PagesController
         $types = Type::findAll();
         view('pages.add_film', compact('types')); // Recherche des types de film pour le champ type du formulaire de création de film.
     }
-
 
 }
