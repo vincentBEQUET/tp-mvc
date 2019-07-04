@@ -154,7 +154,6 @@ class Film extends Db
             'movie_duration'    => $this->movie_duration,
             'gif'               => $this->gif,
         ];
-        dump($data);
         $id = $this->dbCreate(self::TABLE_NAME, $data);
         
         $this->id = $id;
