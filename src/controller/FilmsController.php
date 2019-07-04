@@ -5,8 +5,18 @@ class FilmsController
     public function affichage_film()
     {
         $films = Film::findAll();
-        view('pages.affichage_film', compact('films'));
+        view('films.affichage_films', compact('films'));
     }
+
+    public function show($id)
+    {
+        $film = Film::findOne($id);
+        view('films.affichage_film', compact('film'));
+    }
+
+
+
+
 
 
     public function add_film()

@@ -83,7 +83,7 @@ class Db {
      * $table = "Movie";
      * $request = [
      *      [ 'title', "like",'Rocky' ],
-     *      [ 'realease_date', '>', '2000-01-01']
+     *      [ 'release_date', '>', '2000-01-01']
      * ];
      */
     protected static function dbFind(string $table, array $request = null) {

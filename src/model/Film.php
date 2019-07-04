@@ -163,10 +163,47 @@ class Film extends Db
 
 
 
+    public static function findAll()
+    {
+        $data = Db::dbFind(self::TABLE_NAME);
+        return $data;
+    }
 
 
+    public static function findOne(int $id)
+    {
+        $request = [
+            ['id', '=', $id]
+        ];
+        $element = Db::dbFind(self::TABLE_NAME, $request);
+        if (count($element) > 0)
+        {
+            $element = $element[0];
+        }
+        else
+        {
+            return;
+        }
 
-
+        return $element;
+    }
+    public function update()
+    {
+        if ($this->id > 0) {
+            $data = [
+                'title'             => $this->title,
+                'type_id'           => $this->type_id,
+                'author'            => $this->author,
+                'poster'            => $this->poster,
+                'release_year'      => $this->release_year,
+                'movie_duration'    => $this->movie_duration,
+                'gif'               => $this->gif,
+            ];
+            Db::dbUpdate(self::TABLE_NAME, $data);
+            return $this;
+        }
+        return;
+    }
 
 
 
