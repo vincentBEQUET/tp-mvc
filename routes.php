@@ -19,7 +19,7 @@ $router->get('/add_user','UsersController@add_user');
 $router->post('/user', 'UsersController@save'); //gérer l'envoi du formulaire d'ajout d'un usager
 /* Modifier */
 
-/* Supprimer */
+/* Supprimer   */
 
 
 
