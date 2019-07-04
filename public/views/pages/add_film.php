@@ -12,8 +12,8 @@
         </select>
         <label> Type du film </label><br><br>
         <input name="author" type="text" id="author" placeholder="Auteur du film"><br><br>
+        <input name="movie_duration" type="text" id="duration" placeholder="Durée du film"><br><br>
         <input name="release_year" type="text" id="release_year" placeholder="Année de sortie"><br><br>
-        <input name="duration" type="text" id="duration" placeholder="Durée du film"><br><br>
         <input name="poster" type="file"><br><br>
         <input type="submit" id="ajout_film" value="Ajouter"><br><br>
     </fieldset>
