@@ -25,7 +25,7 @@
                 <td><?= $user['name'] ?></td>
                 <td><?= $user['email'] ?></td>
                 <td><?= $user['created_at'] ?></td>
-                <td><a href="<?= url('affichage_user?id=' . $user['id']) ?>">Plus d'informations</a></td>
+                <td><a href="<?= url('affichage_user/'. $user['id']) ?>">Plus d'informations</a></td>
             </tr>
         <?php endforeach ?>
     </table>

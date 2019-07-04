@@ -21,7 +21,6 @@ class FilmsController
 
     public function add_film()
     {
-
         $types = Type::findAll();
         view('pages.add_film', compact('types')); // Recherche des types de film pour le champ type du formulaire de création de film.
     }

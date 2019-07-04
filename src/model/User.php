@@ -130,10 +130,20 @@ class User extends Db {
                 WHERE vue.user_id = " . $this->getId();
 
         $res = $bdd->query($req);
-        $courses = $res->fetchAll(PDO::FETCH_ASSOC);
+        $films = $res->fetchAll(PDO::FETCH_ASSOC);
 
-        return $courses;
+        return $films;
     }
 
+    public static function findOne(int $id)
+    {
+        $request = [
+            ['id', '=', $id]
+        ];
+        $element = Db::dbFind(self::TABLE_NAME, $request);
+        if (count($element) > 0) $element = $element[0];
+        else return;
 
+        return $element;
+    }
 }
