@@ -5,7 +5,7 @@ class UsersController {
     public function affichage_user()
     {
         $users = User::findAll();
-        view('pages.affichage_users', compact('users'));
+        view('users.affichage_users', compact('users'));
     }
 
     public function add_user()
