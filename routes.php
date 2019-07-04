@@ -28,7 +28,7 @@ $router->post('/user', 'UsersController@save'); //gérer l'envoi du formulaire d
 $router->get('/affichage_film', 'FilmsController@affichage_film');// lister tous les films
 $router->get('/affichage_films/{id}', 'FilmsController@show');//détails d'un film par id
 
-/* Créer */
+/* Créer  */
 $router->get('/add_film', 'FilmsController@add_film'); //afficher le formulaire pour ajouter un film
 $router->post('/add_film', 'FilmsController@save'); //gérer l'envoi du formulaire d'ajout d'un film
 
