@@ -9,7 +9,7 @@ $router->get('', 'PagesController@home' );
 
 /* Routes pour les usagers */
 /* Afficher */
-$router->get('/affichage_user', 'UsersController@affichage_user'); // lister tous les usagers
+$router->get('/affichage_users', 'UsersController@affichage_user'); // lister tous les usagers
 $router->get('/affichage_user/{id}', 'UsersController@show'); //détails d'un usager par id
 /* Créer */
 $router->get('/add_user','UsersController@add_user'); 
@@ -25,8 +25,8 @@ $router->post('/add_user', 'UsersController@save'); //gérer l'envoi du formulai
 
 /* Routes pour les films */
 /* Afficher */
-$router->get('/affichage_film', 'FilmsController@affichage_film');// lister tous les films
-$router->get('/affichage_films/{id}', 'FilmsController@show');//détails d'un film par id
+$router->get('/affichage_films', 'FilmsController@affichage_film');// lister tous les films
+$router->get('/affichage_film/{id}', 'FilmsController@show');//détails d'un film par id
 
 /* Créer  */
 $router->get('/add_film', 'FilmsController@add_film'); //afficher le formulaire pour ajouter un film
@@ -44,7 +44,7 @@ $router->post('/film-delete/{id}', 'FilmsController@saveDelete'); //gérer l'env
 /* Routes pour les vues */
 /* Afficher */
 $router->get('/vues', 'VuesController@index'); // lister tous les vues
-$router->get('/vues/{id}', 'VuesController@show'); //détails d'une vue par id
+$router->get('/vue/{id}', 'VuesController@show'); //détails d'une vue par id
 
 /* Créer */
 $router->get('/vue-add', 'TypesController@add'); //afficher le formulaire pour ajouter une vue
@@ -56,7 +56,7 @@ $router->post('/vue-add', 'TypesController@save');//gérer l'envoi du formulaire
 /* Routes pour les types (genres) */
 /* Afficher */
 $router->get('/types', 'TypesController@index'); // lister tous les types
-$router->get('/types/{id}', 'TypesController@show'); //détails d'un type par id
+$router->get('/type/{id}', 'TypesController@show'); //détails d'un type par id
 
 /* Créer */
 $router->get('/type-add', 'TypesController@add'); //afficher le formulaire pour ajouter un type
