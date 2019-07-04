@@ -4,19 +4,16 @@
 
 <form method="post" enctype="multipart/form-data">
     <fieldset>
-        <input type="text" id="title" placeholder="Titre du film"><br><br>
-        <select id="type">
-            <?php
-            foreach ($types as $type) //Affichage de tous les types.
-            {
-                echo "<option>" . $type['name'] . "</option>";
-            }
-            ?>
+        <input name="title" type="text" id="title" placeholder="Titre du film"><br><br>
+        <select name="type" id="type">
+            <?php foreach ($types as $type) : ?>
+                <option value="<?= $type['id'] ?>"><?= $type['name'] ?></option>            
+            <?php endforeach ?>
         </select>
         <label> Type du film </label><br><br>
-        <input type="text" id="author" placeholder="Auteur du film"><br><br>
-        <input type="text" id="duration" placeholder="Durée du film"><br><br>
-        <input type="file" name="photo"><br><br>
+        <input name="author" type="text" id="author" placeholder="Auteur du film"><br><br>
+        <input name="duration" type="text" id="duration" placeholder="Durée du film"><br><br>
+        <input name="poster" type="file" name="photo"><br><br>
         <input type="submit" id="ajout_film" value="Ajouter"><br><br>
     </fieldset>
 </form>
