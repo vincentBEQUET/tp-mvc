@@ -9,14 +9,14 @@ $router->get('', 'PagesController@home' );
 
 /* Routes pour les usagers */
 /* Afficher */
-$router->get('/affichage_user', 'PagesController@affichage_user'); // lister tous les usagers
-$router->get('/affichage_user/{id}', 'PagesController@show'); //détails d'un usager par id
+$router->get('/affichage_user', 'UsersController@affichage_user'); // lister tous les usagers
+$router->get('/affichage_user/{id}', 'UsersController@show'); //détails d'un usager par id
 /* Créer */
-$router->get('/add_user','PagesController@add_user'); 
+$router->get('/add_user','UsersController@add_user'); 
 
 
 //afficher le formulaire pour ajouter un usager
-$router->post('/user', 'PagesController@save'); //gérer l'envoi du formulaire d'ajout d'un usager
+$router->post('/user', 'UsersController@save'); //gérer l'envoi du formulaire d'ajout d'un usager
 /* Modifier */
 
 /* Supprimer */
@@ -25,12 +25,12 @@ $router->post('/user', 'PagesController@save'); //gérer l'envoi du formulaire d
 
 /* Routes pour les films */
 /* Afficher */
-$router->get('/affichage_film', 'PagesController@affichage_film');// lister tous les films
-$router->get('/affichage_films/{id}', 'PagesController@show');//détails d'un film par id
+$router->get('/affichage_film', 'FilmsController@affichage_film');// lister tous les films
+$router->get('/affichage_films/{id}', 'FilmsController@show');//détails d'un film par id
 
 /* Créer */
-$router->get('/add_film', 'PagesController@add_film');//afficher le formulaire pour ajouter un film
-$router->post('/film-add', 'PagesController@save'); //gérer l'envoi du formulaire d'ajout d'un film
+$router->get('/add_film', 'FilmsController@add_film');//afficher le formulaire pour ajouter un film
+$router->post('/film-add', 'FilmsController@save'); //gérer l'envoi du formulaire d'ajout d'un film
 
 /* Modifier */
 $router->get('/film-change/{id}', 'FilmsController@change'); //afficher le formulaire pour modifier un film
