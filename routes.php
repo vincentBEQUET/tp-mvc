@@ -20,8 +20,7 @@ $router->post('/add_user', 'UsersController@save'); //gérer l'envoi du formulai
 
 /* Modifier */
 // Formulaire d'update
-$router->get('/affichage_user/{id}/edit', 'UsersC
-ontroller@edit');
+$router->get('/affichage_user/{id}/edit', 'UsersController@edit');
 
 // Traitement de l'update
 $router->post('/affichage_user/{id}/edit', 'UsersController@update');
