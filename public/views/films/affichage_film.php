@@ -15,12 +15,12 @@
     </div>
 </div>
 
-<p>Afficher les films par utilisateur: </p><br>
-<form>
-    <fieldset>
-        <input type="text" id="name" placeholder="Nom de l'utilisateur">
-        <input type="submit" id="validation" value="Rechercher">
-    </fieldset>
-</form>
-
+<h1 class="text-center">Utilisateurs qui ont vu ce film</h1>
+<?php if ($vues) : ?>
+    <ul class="list-group list-group-flush">
+        <?php foreach ($vues as $vue) : ?>
+            <li class="list-group-item"><?= $vue['name'] ?> l'ha vue le <?= $vue['date_vue'] ?></li>
+        <?php endforeach; ?>
+    </ul>
+<?php endif; ?>
 <?php $content = ob_get_clean() ?> <?php view('template', compact('content')); ?>
