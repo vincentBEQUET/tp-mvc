@@ -21,6 +21,7 @@ class FilmsController
         //A faire lorsque les POST soient complets. Entre les guimets du $_POST va nom du champ dans le formulaire
 
         if (!empty($_POST)) {
+            dump($_POST['duration']);
             $film = new Film;
 
             $film->setTitle($_POST['title']);

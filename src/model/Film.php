@@ -69,7 +69,7 @@ class Film extends Db
         // Validation proposée
         $current_date = date('Y');
         if ($release_year < 1900 || $release_year > $current_date) {
-            throw new Exception("La date saisie n'est pâs valable");
+            throw new Exception("La date saisie n'est pâs valable.");
         }
         $this->release_year = $release_year;
         return $this;
@@ -84,7 +84,7 @@ class Film extends Db
         if ($duration > 14400) {
             throw new Exception( "La durée d'un film doit être inferieur à 4 heures, donc 14400 seconds.");
         }
-        $this->duration = $duration;
+        $this->movie_duration = $duration;
         return $this;
     }
     public function setGif($gif)
@@ -154,7 +154,7 @@ class Film extends Db
             'movie_duration'    => $this->movie_duration,
             'gif'               => $this->gif,
         ];
-        
+        dump($data);
         $id = $this->dbCreate(self::TABLE_NAME, $data);
         
         $this->id = $id;
