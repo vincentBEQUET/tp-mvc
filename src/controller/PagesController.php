@@ -52,7 +52,7 @@ class PagesController
         $film->save();
 */
         $types = Type::findAll();
-        view('pages.add_film', compact('types'));
+        view('pages.add_film', compact('types')); // Recherche des types de film pour le champ type du formulaire de création de film.
     }
 
 
