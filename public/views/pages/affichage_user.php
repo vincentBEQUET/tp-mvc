@@ -1,8 +1,8 @@
 <?php ob_start(); ?>
 
-<h1>Affichage des utilisateurs</h1>
+<h1>Recherche par utilisateur</h1>
 
-<p>Afficher les utilisateurs par film vu: </p><br>
+<p>Afficher les films vu par l'utilisateur: </p><br>
 <form method="post" action="<?= url('affichage_user') ?>">
     <fieldset>
         <input type="text" id="name" placeholder="Nom du film">

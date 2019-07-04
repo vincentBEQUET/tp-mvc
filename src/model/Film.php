@@ -206,5 +206,24 @@ class Film extends Db
     }
 
 
+    public function film_vue()
+    {
+
+        // J'utilise getDb de la classe Db qui me donne un pointeur PDO.
+        $bdd = Db::getDb();
+
+        // Définition de la requête
+        $req = "SELECT *
+				FROM `vue`
+				INNER JOIN user ON user.id =  vue.user_id
+                WHERE vue.film_id = " . $this->getId();
+
+        $res = $bdd->query($req);
+        $courses = $res->fetchAll(PDO::FETCH_ASSOC);
+
+        return $courses;
+    }
+
+
 
 }

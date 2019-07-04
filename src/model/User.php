@@ -114,4 +114,26 @@ class User extends Db {
         return $data;
     }
 
+
+    // ...
+
+    public function user_vue()
+    {
+
+        // J'utilise getDb de la classe Db qui me donne un pointeur PDO.
+        $bdd = Db::getDb();
+
+        // Définition de la requête
+        $req = "SELECT *
+				FROM `vue`
+				INNER JOIN film ON film.id =  vue.film_id
+                WHERE vue.user_id = " . $this->getId();
+
+        $res = $bdd->query($req);
+        $courses = $res->fetchAll(PDO::FETCH_ASSOC);
+
+        return $courses;
+    }
+
+
 }
