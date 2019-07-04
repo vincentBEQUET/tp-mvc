@@ -17,8 +17,14 @@ $router->get('/add_user','UsersController@add_user');
 
 //afficher le formulaire pour ajouter un usager
 $router->post('/add_user', 'UsersController@save'); //gérer l'envoi du formulaire d'ajout d'un usager
-/* Modifier */
 
+/* Modifier */
+// Formulaire d'update
+$router->get('/affichage_user/{id}/edit', 'UsersC
+ontroller@edit');
+
+// Traitement de l'update
+$router->post('/affichage_user/{id}/edit', 'UsersController@update');
 /* Supprimer   */
 
 

@@ -46,4 +46,16 @@ class UsersController {
         view('pages.add_user');
         
     }
+    
+    public function edit($id){
+        $users = User::findOne($id);
+
+        view('pages.edit', compact('users'));
+    }
+
+    public function update($id){
+        $user = User::findOne($id);
+        $user->setName($_POST['name']);
+        $user->update();
+    }
 }
