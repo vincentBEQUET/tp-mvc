@@ -1,5 +1,5 @@
 <?php
-class PagesController
+class FilmsController
 {
 
     public function affichage_film()
@@ -11,19 +11,23 @@ class PagesController
 
     public function add_film()
     {
-        /*   A faire lorsque les POST soient complets. Entre les guimets du $_POST va nom du champ dans le formulaire
-        $film = new Film;
+           //A faire lorsque les POST soient complets. Entre les guimets du $_POST va nom du champ dans le formulaire
 
-        $film->setTitle($_POST['']);
-        $film->setTypeId($_POST['']);
-        $film->setAuthor($_POST['']);
-        $film->setPoster($_POST['']);
-        $film->setReleaseYear($_POST['']);
-        $film->setMovieDuration($_POST['']);
-        $film->setGif($_POST['']);
+        if (!empty ($_POST))
+        {
+            $film = new Film;
 
-        $film->save();
-*/
+            $film->setTitle($_POST['']);
+            $film->setTypeId($_POST['']);
+            $film->setAuthor($_POST['']);
+            $film->setPoster($_POST['']);
+            $film->setReleaseYear($_POST['']);
+            $film->setMovieDuration($_POST['']);
+            $film->setGif($_POST['']);
+
+            $film->save();
+        }
+        
         $types = Type::findAll();
         view('pages.add_film', compact('types')); // Recherche des types de film pour le champ type du formulaire de création de film.
     }
