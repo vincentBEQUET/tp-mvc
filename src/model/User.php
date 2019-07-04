@@ -117,7 +117,7 @@ class User extends Db {
 
     // ...
 
-    public function user_vue()
+    public static function user_vue($id)
     {
 
         // J'utilise getDb de la classe Db qui me donne un pointeur PDO.
@@ -127,13 +127,23 @@ class User extends Db {
         $req = "SELECT *
 				FROM `vue`
 				INNER JOIN film ON film.id =  vue.film_id
-                WHERE vue.user_id = " . $this->getId();
+                WHERE vue.user_id = " . $id;
 
         $res = $bdd->query($req);
-        $courses = $res->fetchAll(PDO::FETCH_ASSOC);
+        $films = $res->fetchAll(PDO::FETCH_ASSOC);
 
-        return $courses;
+        return $films;
     }
 
+    public static function findOne(int $id)
+    {
+        $request = [
+            ['id', '=', $id]
+        ];
+        $element = Db::dbFind(self::TABLE_NAME, $request);
+        if (count($element) > 0) $element = $element[0];
+        else return;
 
+        return $element;
+    }
 }

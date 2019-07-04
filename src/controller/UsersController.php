@@ -5,9 +5,22 @@ class UsersController {
     public function affichage_user()
     {
         $users = User::findAll();
-        view('pages.affichage_user', compact('users'));
+        view('users.affichage_users', compact('users'));
     }
 
+    public function show($id)
+    {
+        $user = User::findOne($id);
+        $films = User::user_vue($id);
+        view('users.affichage_user', compact('user', 'films'));
+    }
+/*
+    public function user_vu()
+    {
+        $Films = User:: user_vue();
+        view('users.affichage_user', compact('films'));
+    }
+*/
     public function add_user()
     {
         view('pages.add_user');
@@ -33,5 +46,17 @@ class UsersController {
         
         view('pages.add_user');
         
+    }
+    
+    public function edit($id){
+        $users = User::findOne($id);
+
+        view('pages.edit', compact('users'));
+    }
+
+    public function update($id){
+        $user = User::findOne($id);
+        $user->setName($_POST['name']);
+        $user->update();
     }
 }
