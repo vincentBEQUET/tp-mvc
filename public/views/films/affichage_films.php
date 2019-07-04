@@ -16,7 +16,7 @@
     <tbody>
         <?php foreach ($films as $film) : ?>
             <tr class="text-center">
-                <td><a href="<?= url('affichage_films') . '/' . $film['id'] ?>" class="btn btn-primary btn-sm">Voir Film</a></td>
+                <td><a href="<?= url_film ($film['id']) ?>" class="btn btn-primary btn-sm">Voir Film</a></td>
                 <td><?= $film['title'] ?></td>
                 <td><?= $film['type_id'] ?></td>
                 <td><?= $film['author'] ?></td>
