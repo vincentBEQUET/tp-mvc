@@ -108,4 +108,10 @@ class User extends Db {
         $this->id = $id;
     }
 
+    public static function findAll()
+    {
+        $data = Db::dbFind(self::TABLE_NAME);
+        return $data;
+    }
+
 }
