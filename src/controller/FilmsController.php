@@ -11,9 +11,12 @@ class FilmsController
     public function show($id)
     {
         $film = Film::findOne($id);
+        // $vues = Film::film_vue($id);
+        // dump($vues);
+        // view('films.affichage_film', compact('film', 'vues'));
         view('films.affichage_film', compact('film'));
-    }
 
+    }
 
 
 
@@ -28,8 +31,7 @@ class FilmsController
 
     public function save()
     {
-        //A faire lorsque les POST soient complets. Entre les guimets du $_POST va nom du champ dans le formulaire
-
+        
         if (!empty($_POST)) {
 
             $film = new Film;
@@ -39,9 +41,9 @@ class FilmsController
             $film->setAuthor($_POST['author']);
             $film->setMovieDuration($_POST['movie_duration']);
             $film->setReleaseYear($_POST['release_year']);
-            if (isset($_POST['poster']))
+            if (isset($_FILES['poster']))
             {
-                $film->setPoster($_POST['poster']);
+                $film->setPoster($_FILES['poster']);
             }
             if (isset($_POST['gif']))
             {

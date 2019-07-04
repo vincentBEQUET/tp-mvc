@@ -55,12 +55,12 @@ class Film extends Db
     public function setPoster($poster)
     {
         // Validations proposées
-        if (strlen($poster) < 5) {
-            throw new Exception("Le nom de l'auteur est trop court.");
-        }
-        if (strlen($poster) > 50) {
-            throw new Exception("Le nom de l'auteur est trop long.");
-        }
+        // if (strlen($poster) < 5) {
+        //     throw new Exception("Le nom de l'auteur est trop court.");
+        // }
+        // if (strlen($poster) > 50) {
+        //     throw new Exception("Le nom de l'auteur est trop long.");
+        // }
         $this->poster = $poster;
         return $this;
     }
@@ -149,7 +149,7 @@ class Film extends Db
             'title'             => $this->title,
             'type_id'           => $this->type_id,
             'author'            => $this->author,
-            'poster'            => $this->poster,
+            //'poster'            => $this->poster,
             'release_year'      => $this->release_year,
             'movie_duration'    => $this->movie_duration,
             'gif'               => $this->gif,
@@ -157,6 +157,8 @@ class Film extends Db
         $id = $this->dbCreate(self::TABLE_NAME, $data);
         
         $this->id = $id;
+        $this->savePoster();
+        return $this;
 
 
     }
@@ -205,8 +207,14 @@ class Film extends Db
         return;
     }
 
-
-    public function film_vue()
+    /**
+     * ça ne marche pas:
+     * d'abord, on peut pas faire $this->getId() sur la class, pour ça j'ai changé
+     * $this->getId() par $id, que je passe en parametre.
+     * ça ne marche non plus parce que la fonction Db::getDb() est privée, donc on 
+     * ne peut l'utiliser que dans la class Db
+     */
+    public static function film_vue($id)
     {
 
         // J'utilise getDb de la classe Db qui me donne un pointeur PDO.
@@ -216,7 +224,7 @@ class Film extends Db
         $req = "SELECT *
 				FROM `vue`
 				INNER JOIN user ON user.id =  vue.user_id
-                WHERE vue.film_id = " . $this->getId();
+                WHERE vue.film_id = " . $id;
 
         $res = $bdd->query($req);
         $courses = $res->fetchAll(PDO::FETCH_ASSOC);
@@ -224,6 +232,21 @@ class Film extends Db
         return $courses;
     }
 
+    private function savePoster()
+    {
+        $poster = $this->getPoster();
+        $extension = pathinfo($poster['name'])['extension'];
+        $newName = "film_" . $this->getId();
+        $newNameWithExtension = $newName . "." . $extension;
+        move_uploaded_file($poster['tmp_name'], './public/uploads/'  .  $newNameWithExtension);
+        $data = [
+            'id' => $this->getId(),
+            'poster' => $newNameWithExtension
+        ];
+        Db::dbUpdate(self::TABLE_NAME, $data);
+
+        return $this;
+    }
 
 
 }
