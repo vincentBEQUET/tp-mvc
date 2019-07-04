@@ -25,7 +25,13 @@
                 <td><?= $user['name'] ?></td>
                 <td><?= $user['email'] ?></td>
                 <td><?= $user['created_at'] ?></td>
-                <td><a href="<?= url('affichage_user/'. $user['id']) ?>">Plus d'informations</a></td>
+                <td>
+                    <a href="<?= url('affichage_user/' . $user['id']) ?>">Plus d'informations</a>
+                    <br>
+                    <a href="<?= url('affichage_user/' . $user['id'] . '/edit') ?>">Modifier</a>
+                    <br>
+                    <a href="<?= url('affichage_user/' . $user['id'] . '/delete') ?>">Supprimer</a>
+                </td>
             </tr>
         <?php endforeach ?>
     </table>
