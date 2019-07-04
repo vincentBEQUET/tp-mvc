@@ -1,6 +1,6 @@
 <?php
 
-class User {
+class User extends Db {
 
     const TABLE_NAME =  'user';
 
