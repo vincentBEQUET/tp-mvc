@@ -27,11 +27,11 @@ class UsersController {
             {
                 $user->setAvatar($_POST['avatar']); 
             }
-            view('pages.add_user');
             
             $user->save();
         }
         
+        view('pages.add_user');
         
     }
 }
