@@ -1,5 +1,5 @@
 <?php
-class PagesController
+class FilmsController
 {
 
     public function affichage_film()
