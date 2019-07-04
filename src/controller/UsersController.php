@@ -22,8 +22,11 @@ class UsersController {
             
             $user->setName($_POST['name']);
             $user->setPassword($_POST['password']); 
-            $user->setEmail($_POST['email']); 
-            $user->setAvatar($_POST['avatar']); 
+            $user->setEmail($_POST['email']);
+            if (isset($_POST['avatar']))
+            {
+                $user->setAvatar($_POST['avatar']); 
+            }
             view('pages.add_user');
             
             $user->save();
