@@ -19,7 +19,7 @@
         </table>
     </div>
     <div>
-        <h3>Liste des films vu par <?= $user['name'] ?> : </h3>
+        <h7>Liste des films vu par <?= $user['name'] ?> : </h7>
         <table>
             <tr class="text-center">
                 <th>&nbsp;</th>

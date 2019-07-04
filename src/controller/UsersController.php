@@ -11,15 +11,16 @@ class UsersController {
     public function show($id)
     {
         $user = User::findOne($id);
-        view('users.affichage_user', compact('user'));
+        $films = User::user_vue($id);
+        view('users.affichage_user', compact('user', 'films'));
     }
-
+/*
     public function user_vu()
     {
         $Films = User:: user_vue();
         view('users.affichage_user', compact('films'));
     }
-
+*/
     public function add_user()
     {
         view('pages.add_user');
