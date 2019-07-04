@@ -3,7 +3,9 @@
 function redirectTo($route) {
     Header('Location: ' . url($route));
 }
-
+function url_film($id) {
+    return BASE_URL . '/affichage_film/' . $id;
+}
 function url($route) {
     return BASE_URL . '/'. $route;
 }
