@@ -60,5 +60,7 @@ class UsersController {
         $user->setEmail($_POST['email']);
         $user->setPassword($_POST['password']);
         $user->update();
+
+        redirectTo('/affichage_user/' . $id);
     }
 }

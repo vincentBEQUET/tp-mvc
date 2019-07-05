@@ -26,7 +26,6 @@ $router->post('/affichage_user/{id}/edit', 'UsersController@update');
 /* Supprimer   */
 $router->get('/affichage_user/{id}', 'UsersController@show'); //détails d'un usager par id, cette ligne doit etre apres les ligens 22 et 25 car sinon le '/edit' ne sera pas pris en compte 
 
-$router->get('/affichage_user/{id}', 'UsersController@show'); //détails d'un usager par id
 
 
 /* Routes pour les films */
