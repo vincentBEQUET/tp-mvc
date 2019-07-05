@@ -5,7 +5,7 @@ class UsersController {
     public function affichage_user()
     {
         $users = User::findAll();
-        view('users.affichage_users', compact('users'));
+        view('users.affichage_users', compact('users'));//compact('users) permet d'afficher $users = User::findAll() et User de User::findAll correspond à User de User.php;
     }
 
     public function show($id)
@@ -49,14 +49,16 @@ class UsersController {
     }
     
     public function edit($id){
-        $users = User::findOne($id);
+        $user = User::findOne($id);
 
-        view('pages.edit', compact('users'));
+        view('pages.edit', compact('user'));
     }
 
     public function update($id){
-        $user = User::findOne($id);
+        $user = User::findOne($id); /* User en vert correspond à User du fichier 'User'.php*/
         $user->setName($_POST['name']);
+        $user->setEmail($_POST['email']);
+        $user->setPassword($_POST['password']);
         $user->update();
     }
 }

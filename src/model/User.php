@@ -117,8 +117,7 @@ class User extends Db {
 
     // ...
 
-    public static function user_vue($id)
-    {
+    public static function user_vue($id){
 
         // J'utilise getDb de la classe Db qui me donne un pointeur PDO.
         $bdd = Db::getDb();
@@ -135,8 +134,7 @@ class User extends Db {
         return $films;
     }
 
-    public static function findOne(int $id)
-    {
+    public static function findOne(int $id){
         $request = [
             ['id', '=', $id]
         ];
@@ -144,6 +142,28 @@ class User extends Db {
         if (count($element) > 0) $element = $element[0];
         else return;
 
-        return $element;
+        $user = new User; //permet de créer un nouvel objet 
+        $user->setId($element['id']);
+        $user->setNAme($element['name']);
+        $user->setPassword($element['password']);
+        $user->setEmail($element['email']);
+        $user->setAvatar($element['avatar']);
+
+        return $user;
+    }
+
+    
+
+    public function update(){
+        if ($this->id > 0) {
+            $data = [
+                "name"  => $this->name(),
+                "email"   => $this->email(),
+                "password"   => $this->password()
+            ];
+            Db::dbUpdate(self::TABLE_NAME, $data);
+            return $this;
+        }
+        return;
     }
 }
