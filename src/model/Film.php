@@ -54,11 +54,8 @@ class Film extends Db
     
     public function setPoster($poster)
     {
-        if (isset($poster))
-        {
-            $this->poster = $poster;
-            return $this;
-        }
+        $this->poster = $poster;
+        return $this;
     }
     public function setReleaseYear($release_year) 
     {
@@ -85,17 +82,8 @@ class Film extends Db
     }
     public function setGif($gif)
     {
-        if (isset($gif))
-        {
-            if (strlen($gif) < 5) {
-                throw new Exception("Le nom du GIF est trop court.");
-            }
-            if (strlen($gif) < 255) {
-                throw new Exception("Le nom du GIF est trop long.");
-            }
-            $this->gif = $gif;
-            return $this;
-        }
+        $this->gif = $gif;
+        return $this;
     }
 
 
@@ -162,6 +150,7 @@ class Film extends Db
     private function savePoster()
     {
         $poster = $this->getPoster();
+        dump(pathinfo($poster['name']));
         $extension = pathinfo($poster['name'])['extension'];
         $newName = "film_" . $this->getId();
         $newNameWithExtension = $newName . "." . $extension;
@@ -233,7 +222,7 @@ class Film extends Db
                 'author'            => $this->author,
                 'release_year'      => $this->release_year,
                 'movie_duration'    => $this->movie_duration,
-                'gif'               => $this->gif,
+                //'gif'               => $this->gif,
             ];
             Db::dbUpdate(self::TABLE_NAME, $data);
             $this->savePoster();

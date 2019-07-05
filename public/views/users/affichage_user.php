@@ -1,5 +1,5 @@
 <?php ob_start(); ?>
-    <h1><?= $user['name'] ?> : </h1>
+    <h1><?= $user->getName() ?> : </h1>
 
     <div>
         <table>
@@ -10,16 +10,16 @@
                 <th>Date de création</th>
             </tr>
             <tr>
-                <td><?= $user['avatar'] ?></td>
-                <td><?= $user['name'] ?></td>
-                <td><?= $user['email'] ?></td>
-                <td><?= $user['created_at'] ?></td>
+                <td><?= $user->getAvatar() ?></td>
+                <td><?= $user->getName() ?></td>
+                <td><?= $user->getEmail() ?></td>
+                <td><?= $user->getCreatedAt() ?></td>
             </tr>
 
         </table>
     </div>
     <div>
-        <h4>Liste des films vu par <?= $user['name'] ?> : </h4>
+        <h4>Liste des films vu par <?= $user->getName() ?> : </h4>
         <table>
             <tr class="text-center">
                 <th>&nbsp;</th>

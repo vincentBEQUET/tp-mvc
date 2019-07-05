@@ -61,6 +61,7 @@ class UsersController {
         $user->setPassword($_POST['password']);
         $user->update();
 
+        redirectTo('/affichage_user/' . $id);
     }
 
     public function delete($id){
