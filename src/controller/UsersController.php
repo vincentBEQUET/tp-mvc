@@ -60,5 +60,16 @@ class UsersController {
         $user->setEmail($_POST['email']);
         $user->setPassword($_POST['password']);
         $user->update();
+
+        redirectTo('/affichage_user/' . $id);
+    }
+
+    public function delete($id){
+        $user = User::findOne($id);
+        $user->delete();//ici delete doit correspondre à la fonction delete dans le model User.php
+
+        // On redirige vers la liste des étudiants
+        //Header('Location: ' . url('user'));
+        view('users.affichage_user');
     }
 }

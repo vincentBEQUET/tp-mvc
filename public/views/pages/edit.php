@@ -1,6 +1,6 @@
 <?php ob_start(); ?>
 
-<form method="post" action="<?= url('/affichage_user/' . $user->getId() . '/edit') ?>">
+<form method="post" action="<?= url('affichage_user/' . $user->getId() . '/edit') ?>">
     <input type="hidden" name="id" value="<?= $user->getId() ?>" />
     <input type="text" name="name" value="<?= $user->getName() ?>" />
     <input type="mail" name="email" value="<?= $user->getEmail() ?>" />
