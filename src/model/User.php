@@ -157,9 +157,12 @@ class User extends Db {
     public function update(){
         if ($this->id > 0) {
             $data = [
-                "name"  => $this->name(),
-                "email"   => $this->email(),
-                "password"   => $this->password()
+                "name"  => $this->getName(),
+                "email"   => $this->getEmail(),
+                "password"   => $this->getPassword(),
+                "id"   => $this->getId(),
+                "created_at"   => $this->getCreatedAt(),
+                "avatar"   => $this->getAvatar()
             ];
             Db::dbUpdate(self::TABLE_NAME, $data);
             return $this;
