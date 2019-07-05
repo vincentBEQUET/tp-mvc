@@ -48,15 +48,17 @@ class UsersController {
         
     }
     
-    public function edit($id){
-        $users = User::findOne($id);
+    public function edit(int $id){
+        $user = User::findOne($id);
 
-        view('pages.edit', compact('users'));
+        view('pages.edit', compact('user'));
     }
 
     public function update($id){
-        $user = User::findOne($id);
+        $user = User ::findOne($id); /* User en vert correspond à User du fichier 'User'.php*/
         $user->setName($_POST['name']);
+        $user->setEmail($_POST['email']);
+        $user->setPassword($_POST['password']);
         $user->update();
     }
 }
