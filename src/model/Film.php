@@ -138,7 +138,7 @@ class Film extends Db
             'author'            => $this->author,
             'release_year'      => $this->release_year,
             'movie_duration'    => $this->movie_duration,
-            'gif'               => $this->gif,
+            // 'gif'               => $this->gif,
         ];
         $id = $this->dbCreate(self::TABLE_NAME, $data);
         
@@ -150,7 +150,6 @@ class Film extends Db
     private function savePoster()
     {
         $poster = $this->getPoster();
-        dump(pathinfo($poster['name']));
         $extension = pathinfo($poster['name'])['extension'];
         $newName = "film_" . $this->getId();
         $newNameWithExtension = $newName . "." . $extension;
@@ -228,6 +227,16 @@ class Film extends Db
             $this->savePoster();
             return $this;
         }
+        return;
+    }
+    public function delete()
+    {
+        $data = [
+            'id'    => $this->getId()
+        ];
+        dump($data);
+        Db::dbDelete(self::TABLE_NAME, $data);
+        
         return;
     }
 
