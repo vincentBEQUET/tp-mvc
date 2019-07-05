@@ -62,7 +62,8 @@ class FilmsController
         if (!empty($_POST))
         {
             $film = Film::findOne($id);
-            dump($film);
+            dump($_FILES['poster']);
+            dump($_FILES['gif']);
             $film->setTitle($_POST['title']);
             $film->setTypeId($_POST['type']);
             $film->setAuthor($_POST['author']);
@@ -70,7 +71,7 @@ class FilmsController
             $film->setReleaseYear($_POST['release_year']);
             $film->setPoster($_FILES['poster']);
             $film->setGif($_FILES['gif']);
-
+            
             $film->update();
         }
     }
