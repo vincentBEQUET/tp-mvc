@@ -70,6 +70,6 @@ class UsersController {
 
         // On redirige vers la liste des étudiants
         //Header('Location: ' . url('user'));
-        view('users.affichage_user');
+        redirectTo('affichage_users/');
     }
 }
