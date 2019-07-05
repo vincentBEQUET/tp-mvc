@@ -3,7 +3,7 @@
 <h1 class="text-center">Affichage du film.</h1>
 
 <div class="card mb-3">
-    <img src="<?= uploads_url($film['poster']) ?>" class="card-img-top" alt="Image du Film">
+    <img src="<?= uploads_url($film['poster']) ?>" class="film-image card-img-top" height="300px" alt="Image du Film">
     <div class="card-body">
         <h5 class="card-title"><?= $film['title'] ?></h5>
         <p class="card-text">On aurait pu metre une description du film.</p>

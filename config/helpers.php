@@ -15,15 +15,15 @@ function uploads_url($img) {
 }
 
 function img_url($img) {
-    return BASE_URL . '/public/assets/img' . $img;
+    return BASE_URL . '/public/assets/img/' . $img;
 }
 
 function css_url($css) {
-    return BASE_URL . '/public/assets/css' . $css;
+    return BASE_URL . '/public/assets/css/' . $css;
 }
 
 function js_url($js) {
-    return BASE_URL . '/public/assets/js' . $js;
+    return BASE_URL . '/public/assets/js/' . $js;
 }
 
 function public_url($url) {}
