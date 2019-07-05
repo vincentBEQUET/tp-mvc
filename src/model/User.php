@@ -173,15 +173,7 @@ class User extends Db {
     
     public function delete()
     {
-        $data = [
-            "id"   => $this->getId(),
-            "name"  => $this->getName(),
-            "email"   => $this->getEmail(),
-            "password"   => $this->getPassword(),
-            "created_at"   => $this->getCreatedAt(),
-            "avatar"   => $this->getAvatar()
-        ];
-
+        $data = ["id"   => $this->getId(),];
         Db::dbDelete(self::TABLE_NAME, $data);
         return;
     }

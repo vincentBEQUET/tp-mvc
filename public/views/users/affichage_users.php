@@ -11,13 +11,15 @@
 </form>
 
 <div>
-    <table>
+    <table class="table">
         <tr>
             <th>Avatar</th>
             <th>Nom</th>
             <th>email</th>
             <th>Date de création</th>
             <th>Plus d'informations</th>
+            <th>Modifier</th>
+            <th>Supprimer</th>
         </tr>
         <?php foreach ($users as $user) : ?>
             <tr>
@@ -26,11 +28,13 @@
                 <td><?= $user['email'] ?></td>
                 <td><?= $user['created_at'] ?></td>
                 <td>
-                    <a href="<?= url('affichage_user/' . $user['id']) ?>">Plus d'informations</a>
-                    <br>
-                    <a href="<?= url('affichage_user/' . $user['id'] . '/edit') ?>">Modifier</a>
-                    <br>
-                    <a href="<?= url('affichage_user/' . $user['id'] . '/delete') ?>">Supprimer</a>
+                    <a href="<?= url('affichage_user/' . $user['id']) ?>"><i class="film-icon fas fa-hand-point-right"></i></a>
+                </td>
+                <td>
+                    <a href="<?= url('affichage_user/' . $user['id'] . '/edit') ?>"><i class="film-icon fas fa-pen-square"></i></a>
+                </td>
+                <td>
+                    <a href="<?= url('affichage_user/' . $user['id'] . '/delete') ?>"><i class="film-icon fas fa-trash-alt"></i></a>
                 </td>
             </tr>
         <?php endforeach ?>
