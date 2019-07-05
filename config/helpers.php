@@ -13,6 +13,13 @@ function url_delete_film($id)
 {
     return BASE_URL . '/affichage_film/' . $id . '/delete';
 }
+function url_edit_type($id){
+    return BASE_URL . '/type/' . $id . '/edit';
+}
+function url_delete_type($id)
+{
+    return BASE_URL . '/type/' . $id . '/delete';
+}
 function url($route) {
     return BASE_URL . '/'. $route;
 }

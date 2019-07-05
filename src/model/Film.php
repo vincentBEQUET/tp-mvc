@@ -54,8 +54,10 @@ class Film extends Db
     
     public function setPoster($poster)
     {
-        $this->poster = $poster;
-        return $this;
+        if (!empty($poster)) {
+            $this->poster = $poster;
+            return $this;
+        }
     }
     public function setReleaseYear($release_year) 
     {
@@ -211,7 +213,7 @@ class Film extends Db
 
 
 
-    public function update()
+    public function update(bool $posterUpdate, bool $gifUpdate)
     {
         if ($this->id > 0) {
             $data = [
@@ -224,7 +226,8 @@ class Film extends Db
                 //'gif'               => $this->gif,
             ];
             Db::dbUpdate(self::TABLE_NAME, $data);
-            $this->savePoster();
+
+            if ($posterUpdate) $this->savePoster();
             return $this;
         }
         return;
@@ -234,7 +237,6 @@ class Film extends Db
         $data = [
             'id'    => $this->getId()
         ];
-        dump($data);
         Db::dbDelete(self::TABLE_NAME, $data);
         
         return;

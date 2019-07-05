@@ -34,11 +34,9 @@ $router->get('/affichage_user/{id}', 'UsersController@show'); //détails d'un us
 /* Modifier */
 $router->get('/affichage_film/{id}/edit', 'FilmsController@edit'); //afficher le formulaire pour modifier un film
 $router->post('/affichage_film/{id}/edit', 'FilmsController@update'); //gérer l'envoi du formulaire de modification d'un film
-// $router->post('/affichage_film/{id}', 'FilmsController@saveEdit'); //gérer l'envoi du formulaire de modification d'un film
 
 /* Supprimer */
 $router->get('/affichage_film/{id}/delete', 'FilmsController@delete'); //afficher le formulaire pour modifier un film
-// $router->post('/affichage_film/{id}/delete', 'FilmsController@saveDelete'); //gérer l'envoi du formulaire de modification d'un film
 
 /* Afficher */
 $router->get('/affichage_films', 'FilmsController@affichage_film');// lister tous les films

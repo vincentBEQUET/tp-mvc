@@ -13,7 +13,7 @@ class Type extends Db {
         return $this;
     }
 
-    public function setname($name)
+    public function setName($name)
     {
         $this->name = $name;
         return $this;
@@ -24,7 +24,7 @@ class Type extends Db {
         return $this->id;
     }
 
-    public function getname()
+    public function getName()
     {
         return $this->name;
     }

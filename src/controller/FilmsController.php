@@ -22,7 +22,7 @@ class FilmsController
     public function add_film()
     {
         $types = Type::findAll();
-        view('pages.add_film', compact('types')); // Recherche des types de film pour le champ type du formulaire de création de film.
+        view('films.add_film', compact('types')); // Recherche des types de film pour le champ type du formulaire de création de film.
     }
 
     public function save()
@@ -68,12 +68,22 @@ class FilmsController
             $film->setAuthor($_POST['author']);
             $film->setMovieDuration($_POST['movie_duration']);
             $film->setReleaseYear($_POST['release_year']);
-            $film->setPoster($_FILES['poster']);
-            $film->setGif($_FILES['gif']);
 
-            $film->update();
-            // header('Location: ' . url_film($film->getId()));
-            // redirectTo('affichage_films');
+            $posterUpdate = false;
+            if ($_FILES['poster']['name'] !== '') {
+                $film->setPoster($_FILES['poster']);
+                $posterUpdate = true;
+            }
+
+            $gifUpdate = false;
+            if ($_FILES['gif']['name'] !== '') {
+                $film-> setGif($_FILES['gif']);
+                $gifUpdate = true;
+            }
+
+            $film->update($posterUpdate, $gifUpdate);
+
+            redirectTo('affichage_films');
         }
     }
 
@@ -82,7 +92,6 @@ class FilmsController
         $film = Film::findOne($id);
         $film->delete();
 
-        // On redirige vers la liste des étudiants
-        // redirectTo('affichage_films');
+        redirectTo('affichage_films');
     }
 }

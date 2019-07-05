@@ -10,6 +10,8 @@
 <a href="<?= url('add_film') ?>">add_film</a><br>
 <a href="<?= url('affichage_users') ?>">affichage_users</a><br>
 <a href="<?= url('affichage_films') ?>">affichage_films</a><br>
+<a href="<?= url('types') ?>">Les Types</a><br>
+
 
 
 <?php $content = ob_get_clean() ?> <?php view('template', compact('content')); ?>

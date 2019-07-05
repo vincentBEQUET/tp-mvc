@@ -6,7 +6,7 @@
         <tr class="text-center">
             <th>Poster</th>
             <th>Titre</th>
-            <th>Type ID</th>
+            <th>Type</th>
             <th>Author</th>
             <th>Année</th>
             <th>Duration</th>
