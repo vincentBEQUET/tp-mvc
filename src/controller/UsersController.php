@@ -49,9 +49,9 @@ class UsersController {
     }
     
     public function edit($id){
-        $users = User::findOne($id);
+        $user = User::findOne($id);
 
-        view('pages.edit', compact('users'));
+        view('pages.edit', compact('user'));
     }
 
     public function update($id){

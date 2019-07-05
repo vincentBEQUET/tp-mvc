@@ -10,7 +10,6 @@ $router->get('', 'PagesController@home' );
 /* Routes pour les usagers */
 /* Afficher */
 $router->get('/affichage_users', 'UsersController@affichage_user'); // lister tous les usagers
-$router->get('/affichage_user/{id}', 'UsersController@show'); //détails d'un usager par id
 /* Créer */
 $router->get('/add_user','UsersController@add_user'); 
 
@@ -26,6 +25,7 @@ $router->get('/affichage_user/{id}/edit', 'UsersController@edit');
 $router->post('/affichage_user/{id}/edit', 'UsersController@update');
 /* Supprimer   */
 
+$router->get('/affichage_user/{id}', 'UsersController@show'); //détails d'un usager par id
 
 
 /* Routes pour les films */
