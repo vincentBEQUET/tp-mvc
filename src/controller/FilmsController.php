@@ -83,6 +83,6 @@ class FilmsController
         $film->delete();
 
         // On redirige vers la liste des étudiants
-        redirectTo('affichage_films');
+        // redirectTo('affichage_films');
     }
 }
