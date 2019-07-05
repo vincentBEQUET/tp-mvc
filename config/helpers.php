@@ -6,6 +6,13 @@ function redirectTo($route) {
 function url_film($id) {
     return BASE_URL . '/affichage_film/' . $id;
 }
+function url_edit_film($id){
+    return BASE_URL . '/affichage_film/' . $id . '/edit';
+}
+function url_delete_film($id)
+{
+    return BASE_URL . '/affichage_film/' . $id . '/delete';
+}
 function url($route) {
     return BASE_URL . '/'. $route;
 }

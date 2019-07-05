@@ -29,6 +29,16 @@ $router->post('/affichage_user/{id}/edit', 'UsersController@update');
 
 
 /* Routes pour les films */
+
+/* Modifier */
+$router->get('/affichage_film/{id}/edit', 'FilmsController@edit'); //afficher le formulaire pour modifier un film
+$router->post('/affichage_film/{id}/edit', 'FilmsController@update'); //gérer l'envoi du formulaire de modification d'un film
+// $router->post('/affichage_film/{id}', 'FilmsController@saveEdit'); //gérer l'envoi du formulaire de modification d'un film
+
+/* Supprimer */
+$router->get('/affichage_film/{id}/delete', 'FilmsController@delete'); //afficher le formulaire pour modifier un film
+$router->post('/affichage_film/{id}/delete', 'FilmsController@saveDelete'); //gérer l'envoi du formulaire de modification d'un film
+
 /* Afficher */
 $router->get('/affichage_films', 'FilmsController@affichage_film');// lister tous les films
 $router->get('/affichage_film/{id}', 'FilmsController@show');//détails d'un film par id
@@ -37,13 +47,6 @@ $router->get('/affichage_film/{id}', 'FilmsController@show');//détails d'un fil
 $router->get('/add_film', 'FilmsController@add_film'); //afficher le formulaire pour ajouter un film
 $router->post('/add_film', 'FilmsController@save'); //gérer l'envoi du formulaire d'ajout d'un film
 
-/* Modifier */
-$router->get('/film-change/{id}', 'FilmsController@change'); //afficher le formulaire pour modifier un film
-$router->post('/film-change/{id}', 'FilmsController@saveChange'); //gérer l'envoi du formulaire de modification d'un film
-
-/* Supprimer */
-$router->get('/film-delete/{id}', 'FilmsController@delete'); //afficher le formulaire pour modifier un film
-$router->post('/film-delete/{id}', 'FilmsController@saveDelete'); //gérer l'envoi du formulaire de modification d'un film
 
 
 /* Routes pour les vues */

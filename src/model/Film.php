@@ -54,15 +54,11 @@ class Film extends Db
     
     public function setPoster($poster)
     {
-        // Validations proposées
-        // if (strlen($poster) < 5) {
-        //     throw new Exception("Le nom de l'auteur est trop court.");
-        // }
-        // if (strlen($poster) > 50) {
-        //     throw new Exception("Le nom de l'auteur est trop long.");
-        // }
-        $this->poster = $poster;
-        return $this;
+        if (isset($poster))
+        {
+            $this->poster = $poster;
+            return $this;
+        }
     }
     public function setReleaseYear($release_year) 
     {
@@ -89,14 +85,17 @@ class Film extends Db
     }
     public function setGif($gif)
     {
-        if (strlen($gif) < 5) {
-            throw new Exception("Le nom du GIF est trop court.");
+        if (isset($gif))
+        {
+            if (strlen($gif) < 5) {
+                throw new Exception("Le nom du GIF est trop court.");
+            }
+            if (strlen($gif) < 255) {
+                throw new Exception("Le nom du GIF est trop long.");
+            }
+            $this->gif = $gif;
+            return $this;
         }
-        if (strlen($gif) < 255) {
-            throw new Exception("Le nom du GIF est trop long.");
-        }
-        $this->gif = $gif;
-        return $this;
     }
 
 
@@ -149,7 +148,6 @@ class Film extends Db
             'title'             => $this->title,
             'type_id'           => $this->type_id,
             'author'            => $this->author,
-            //'poster'            => $this->poster,
             'release_year'      => $this->release_year,
             'movie_duration'    => $this->movie_duration,
             'gif'               => $this->gif,
@@ -159,8 +157,22 @@ class Film extends Db
         $this->id = $id;
         $this->savePoster();
         return $this;
+    }
 
+    private function savePoster()
+    {
+        $poster = $this->getPoster();
+        $extension = pathinfo($poster['name'])['extension'];
+        $newName = "film_" . $this->getId();
+        $newNameWithExtension = $newName . "." . $extension;
+        move_uploaded_file($poster['tmp_name'], './public/uploads/'  .  $newNameWithExtension);
+        $data = [
+            'id' => $this->getId(),
+            'poster' => $newNameWithExtension
+        ];
+        Db::dbUpdate(self::TABLE_NAME, $data);
 
+        return $this;
     }
 
 
@@ -170,6 +182,10 @@ class Film extends Db
         $data = Db::dbFind(self::TABLE_NAME);
         return $data;
     }
+
+
+
+
 
 
     public static function findOne(int $id)
@@ -187,33 +203,46 @@ class Film extends Db
             return;
         }
 
-        return $element;
+        $film = new Film;
+
+        $film->setId($element['id']);
+        $film->setTitle($element['title']);
+        $film->setAuthor($element['author']);
+        $film->setTypeId($element['type_id']);
+        $film->setMovieDuration($element['movie_duration']);
+        $film->setReleaseYear($element['release_year']);
+        $film->setPoster($element['poster']);
+        $film->setGif($element['gif']);
+
+
+        return $film;
     }
+
+
+
+
+
+
     public function update()
     {
         if ($this->id > 0) {
             $data = [
+                'id'                => $this->id,
                 'title'             => $this->title,
                 'type_id'           => $this->type_id,
                 'author'            => $this->author,
-                'poster'            => $this->poster,
                 'release_year'      => $this->release_year,
                 'movie_duration'    => $this->movie_duration,
                 'gif'               => $this->gif,
             ];
             Db::dbUpdate(self::TABLE_NAME, $data);
+            $this->savePoster();
             return $this;
         }
         return;
     }
 
-    /**
-     * ça ne marche pas:
-     * d'abord, on peut pas faire $this->getId() sur la class, pour ça j'ai changé
-     * $this->getId() par $id, que je passe en parametre.
-     * ça ne marche non plus parce que la fonction Db::getDb() est privée, donc on 
-     * ne peut l'utiliser que dans la class Db
-     */
+    
     public static function film_vue($id)
     {
 
@@ -230,22 +259,6 @@ class Film extends Db
         $courses = $res->fetchAll(PDO::FETCH_ASSOC);
 
         return $courses;
-    }
-
-    private function savePoster()
-    {
-        $poster = $this->getPoster();
-        $extension = pathinfo($poster['name'])['extension'];
-        $newName = "film_" . $this->getId();
-        $newNameWithExtension = $newName . "." . $extension;
-        move_uploaded_file($poster['tmp_name'], './public/uploads/'  .  $newNameWithExtension);
-        $data = [
-            'id' => $this->getId(),
-            'poster' => $newNameWithExtension
-        ];
-        Db::dbUpdate(self::TABLE_NAME, $data);
-
-        return $this;
     }
 
 

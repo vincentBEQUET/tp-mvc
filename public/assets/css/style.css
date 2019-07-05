@@ -1,3 +1,6 @@
 .film-image {
     object-fit: contain;
 }
+.film-icon {
+    font-size: 1.5em;
+}

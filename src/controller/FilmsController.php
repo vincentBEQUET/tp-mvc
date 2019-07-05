@@ -19,9 +19,6 @@ class FilmsController
     }
 
 
-
-
-
     public function add_film()
     {
         $types = Type::findAll();
@@ -41,14 +38,9 @@ class FilmsController
             $film->setAuthor($_POST['author']);
             $film->setMovieDuration($_POST['movie_duration']);
             $film->setReleaseYear($_POST['release_year']);
-            if (isset($_FILES['poster']))
-            {
-                $film->setPoster($_FILES['poster']);
-            }
-            if (isset($_POST['gif']))
-            {
-                $film->setGif($_POST['gif']);
-            }
+            $film->setPoster($_FILES['poster']);
+            $film->setGif($_FILES['gif']);
+            
             $film->save();
         }
 
@@ -56,4 +48,30 @@ class FilmsController
         view('pages.add_film', compact('types')); // Recherche des types de film pour le champ type du formulaire de création de film.
     }
 
+
+    public function edit($id)
+    {
+        $film = Film::findOne($id);
+        $types = Type::findAll();
+
+        view('films.edit', compact('film', 'types'));
+    }
+
+    public function update($id)
+    {
+        if (!empty($_POST))
+        {
+            $film = Film::findOne($id);
+            dump($film);
+            $film->setTitle($_POST['title']);
+            $film->setTypeId($_POST['type']);
+            $film->setAuthor($_POST['author']);
+            $film->setMovieDuration($_POST['movie_duration']);
+            $film->setReleaseYear($_POST['release_year']);
+            $film->setPoster($_FILES['poster']);
+            $film->setGif($_FILES['gif']);
+
+            $film->update();
+        }
+    }
 }
