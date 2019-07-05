@@ -142,8 +142,17 @@ class User extends Db {
         if (count($element) > 0) $element = $element[0];
         else return;
 
-        return $element;
+        $user = new User; //permet de créer un nouvel objet 
+        $user->setId($element['id']);
+        $user->setNAme($element['name']);
+        $user->setPassword($element['password']);
+        $user->setEmail($element['email']);
+        $user->setAvatar($element['avatar']);
+
+        return $user;
     }
+
+    
 
     public function update(){
         if ($this->id > 0) {
